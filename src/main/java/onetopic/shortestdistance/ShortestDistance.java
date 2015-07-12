@@ -1,29 +1,195 @@
 package onetopic.shortestdistance;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
- * 	ËµÃ÷£º¹«½»ÏßÂ·³Ë³µ·½°¸²éÑ¯¡£
- * ¸ø¶¨NÌõ¹«½»ÏßÂ·£¬ÏßÂ·ÖĞ°üÀ¨Õ¾µãÃû³Æ¡£
- * ÇëÊµÏÖ²éÑ¯ÈÎÒâÁ½¸öÕ¾µÄ³Ë³µ·½°¸¡£ 
- * °´ÏßÂ·×î¶Ì£¬¼´Ëù¾­¹ıÕ¾µã×îÉÙ¡£ 
- * ±à³ÌÒªÇó Çë±àĞ´³ÌĞò·ÖÎöbusline.txt£¬¸ÃÎÄ¼ş°üÀ¨ÏßÂ·ĞÅÏ¢¡£
- * ¸ñÊ½ÈçÏÂ¡£Õ¾µãÃû³ÆÒÔ¿Õ¸ñ·Ö¸î£¬Ãû³ÆÏàÍ¬Îª¿É»»³ËÕ¾µã¡£
- * Ã¿ĞĞ±íÊ¾Ò»ÌõÏßÂ·¡£ A B C D E C F G H I 
- * ÊµÏÖ²éÑ¯·½·¨£¬ 
- * 1.getRide: ÊäÈëÁ½¸öµØµã£¬²éÕÒÁ½µãÖ®¼äµÄ×î¶ÌÏßÂ·¡£·µ»Ø³Ë³µËùĞè×îÉÙÕ¾µã¸öÊı£¨°üÀ¨ÆğÊ¼¡¢µ½´ïÁ½¸öÕ¾µã±¾Éí¡£ÀıÈçA£­C£¬·µ»Ø3£©¡£
- * 2.»»³ËËãÁ½¸öÕ¾(ÀıÈçA-F£¬·µ»Ø5)¡£»»³ËÖ»¿¼ÂÇÒ»´Î£¬²»¿¼ÂÇ¶à´Î»»³Ë¡£ 3.Ã»ÓĞ³Ë³µ·½°¸¡¢Òì³£·µ»Ø-1£» 4.·´·½Ïò²»ËãÒì³£¡£¼´¿ÉÒÔC-A£¬·µ»Ø
+ * 	è¯´æ˜ï¼šå…¬äº¤çº¿è·¯ä¹˜è½¦æ–¹æ¡ˆæŸ¥è¯¢ã€‚
+ * ç»™å®šNæ¡å…¬äº¤çº¿è·¯ï¼Œçº¿è·¯ä¸­åŒ…æ‹¬ç«™ç‚¹åç§°ã€‚
+ * è¯·å®ç°æŸ¥è¯¢ä»»æ„ä¸¤ä¸ªç«™çš„ä¹˜è½¦æ–¹æ¡ˆã€‚ 
+ * æŒ‰çº¿è·¯æœ€çŸ­ï¼Œå³æ‰€ç»è¿‡ç«™ç‚¹æœ€å°‘ã€‚ 
+ * ç¼–ç¨‹è¦æ±‚ è¯·ç¼–å†™ç¨‹åºåˆ†æbusline.txtï¼Œè¯¥æ–‡ä»¶åŒ…æ‹¬çº¿è·¯ä¿¡æ¯ã€‚
+ * æ ¼å¼å¦‚ä¸‹ã€‚ç«™ç‚¹åç§°ä»¥ç©ºæ ¼åˆ†å‰²ï¼Œåç§°ç›¸åŒä¸ºå¯æ¢ä¹˜ç«™ç‚¹ã€‚
+ * æ¯è¡Œè¡¨ç¤ºä¸€æ¡çº¿è·¯ã€‚ A B C D E C F G H I 
+ * å®ç°æŸ¥è¯¢æ–¹æ³•ï¼Œ 
+ * 1.getRide: è¾“å…¥ä¸¤ä¸ªåœ°ç‚¹ï¼ŒæŸ¥æ‰¾ä¸¤ç‚¹ä¹‹é—´çš„æœ€çŸ­çº¿è·¯ã€‚è¿”å›ä¹˜è½¦æ‰€éœ€æœ€å°‘ç«™ç‚¹ä¸ªæ•°ï¼ˆåŒ…æ‹¬èµ·å§‹ã€åˆ°è¾¾ä¸¤ä¸ªç«™ç‚¹æœ¬èº«ã€‚ä¾‹å¦‚Aï¼Cï¼Œè¿”å›3ï¼‰ã€‚
+ * 2.æ¢ä¹˜ç®—ä¸¤ä¸ªç«™(ä¾‹å¦‚A-Fï¼Œè¿”å›5)ã€‚æ¢ä¹˜åªè€ƒè™‘ä¸€æ¬¡ï¼Œä¸è€ƒè™‘å¤šæ¬¡æ¢ä¹˜ã€‚ 3.æ²¡æœ‰ä¹˜è½¦æ–¹æ¡ˆã€å¼‚å¸¸è¿”å›-1ï¼› 4.åæ–¹å‘ä¸ç®—å¼‚å¸¸ã€‚å³å¯ä»¥C-Aï¼Œè¿”å›
  * 3 public int getRide(String filePath, String pointA, String pointB)
  * @author hp
  *
  */
-public class ShortestDistance {
 
-	public int getRide(String filePath, String pointA, String pointB)
+/**
+ *åƒè€ƒå¯¦ç¾1ã€
+æ ¹æ® å…¬ äº¤ çº¿è·¯çš„å®é™…ï¼Œå¯ä»¥è®¤ä¸ºä¸¤æ¬¡ä¹‹å†…çš„è½¬è½¦æ˜¯æ¯”è¾ƒåˆç†çš„ï¼Œè¶…è¿‡ä¸¤æ¬¡çš„è½¬è½¦æ˜¯æ— 
+æ„ä¹‰çš„ï¼Œä¸äºˆè€ƒè™‘ã€‚ç¬”è€…æå‡ºå…¬äº¤è½¬è½¦æœ€çŸ­è·¯å¾„ç®—æ³•çš„æ­¥éª¤ï¼Œå¦‚ä¸‹æ‰€ç¤ºã€‚
+(1)è¾“ å…¥ ä¹˜è½¦å§‹ç‚¹Aã€ç»ˆç‚¹B
+(2)æ±‚ ç» è¿‡Aæˆ–å…¶é™„è¿‘çš„çº¿è·¯ s(I)(I=1,2 ,â‹¯,ã€‚)(mä¸ºæ­£æ•´æ•°)ï¼ŒåŠç»è¿‡Bæˆ–
+å…¶é™„è¿‘çš„çº¿è·¯t (J) (J=1, 2,â‹¯,n) (nä¸ºæ­£æ•´æ•°)ã€‚
+(3) æœ‰ s (I) =t(J)å—?
+è‹¥æœ‰ ï¼Œ æ»¡ è¶³æ­¤æ¡ä»¶çš„çº¿è·¯s(I)ä¹Ÿå³t(J)ä¸ºAåˆ°Bçš„ç›´è¾¾è½¦çº¿è·¯ï¼Œè¾“å‡ºç»“æœï¼Œç»“æŸ
+è¿ç®—ã€‚
+è‹¥æ²¡ æœ‰ ï¼Œ å¾€ä¸‹æ‰§è¡Œã€‚
+
+(4) æ±‚ çº¿ è·¯s(I)çš„ç«™ç‚¹E(I,U)(U=l,2 .â‹¯,P,P ä¸ºæ­£æ•´æ•°)ï¼ŒåŠçº¿è·¯t(J)çš„
+ç«™ç‚¹F(J, V) (V=1, 2,â‹¯ï¼Œ9, 9ä¸ºæ­£æ•´æ•°)ã€‚
+(5)æœ‰ E(I,U)= F (J,V)å—?
+è‹¥æœ‰ ,æ»¡ è¶³æ­¤æ¡ä»¶çš„çº¿è·¯:(I),t(J)(å¯èƒ½ä¸æ­¢ä¸€ç§)å³ä¸ºä¸€æ¬¡è½¬è½¦çš„çº¿è·¯ï¼Œ
+è®¡ç®—å„ç§ä¸€æ¬¡è½¬è½¦æ–¹æ³•çš„ä¹˜è½¦è·¯ç¨‹ï¼Œä¹˜è½¦è·¯ç¨‹æœ€çŸ­è½¬è½¦çº¿è·¯ï¼Œå†æ±‚è½¬è½¦åœ°ç‚¹ï¼Œè¾“å‡ºç»“æœï¼Œç»“æŸè¿ç®—
+ * @author yinlg
+ */
+public class ShortestDistance {
+	
+	 static Map<String,List<String>> linesMap = new HashMap();
+	 static List<String> lineOne = new ArrayList();
+	 static List<String> lineTwo = new ArrayList();
+	 static
+	 {
+		 lineOne.add("A"); 
+		 lineOne.add("B"); 
+		 lineOne.add("C"); 
+		 lineOne.add("D"); 
+		 lineOne.add("E"); 
+		 lineOne.add("H"); 
+		 
+		 lineTwo.add("C"); 
+		 lineTwo.add("E"); 
+		 lineTwo.add("D"); 
+		 lineTwo.add("G"); 
+		 lineTwo.add("H"); 
+		 lineTwo.add("M"); 
+		 
+		 linesMap.put("1", lineOne);
+		 linesMap.put("2", lineTwo);
+		 
+	 }
+	 
+	int getRide(String pointA, String pointB)
 	{
+		Map<String,List<String>> onceMap = new HashMap();
+		
+		//1ã€æ±‚å¾—ç›´è¾¾çº¿è·¯
+		for(Entry entry:linesMap.entrySet())
+		{
+			String key = (String) entry.getKey();
+			List<String> list = (List<String>) entry.getValue();
+			
+			if(list.contains(pointA)&&list.contains(pointB))
+			{
+				if(list.indexOf(pointA)<list.indexOf(pointB))
+				{
+					onceMap.put(key, list.subList(list.indexOf(pointA), list.indexOf(pointB)));
+				}
+				else
+				{
+					List subList = list.subList(list.indexOf(pointA), list.indexOf(pointB));
+					Collections.reverse(subList);
+					onceMap.put(key,subList);
+				}
+			}
+		}
+		
+		
+		Map<String,List<String>> twiceMap = new HashMap();
+		
+		//2ã€æ±‚å¾—ä¸“è½¦ä¸€æ¬¡çº¿è·¯
+		for(Entry entryA:linesMap.entrySet())
+		{
+			String keyA = (String) entryA.getKey();
+			List<String> keyAList = (List<String>) entryA.getValue();
+			
+			if(!keyAList.contains(pointA))
+			{
+				continue;
+			}
+			
+			for(Entry entryB:linesMap.entrySet())
+			{
+				String keyB = (String) entryB.getKey();
+				
+				if(keyA.equals(keyB))
+				{
+					continue;
+				}
+				
+				List<String> keyBList = (List<String>) entryB.getValue();
+				
+				if(!keyBList.contains(pointB))
+				{
+					continue;
+				}
+				
+				
+				for(String point : keyBList)
+				{
+					if(keyBList.contains(point))
+					{
+						List<String> subAList = new ArrayList();
+						
+						if(keyAList.indexOf(pointA)<keyAList.indexOf(point))
+						{
+							
+							if(keyBList.indexOf(point)<keyBList.indexOf(pointB))
+							{
+								subAList.addAll(keyAList.subList(keyAList.indexOf(pointA),keyAList.indexOf(point)));
+								subAList.addAll(keyAList.subList(keyBList.indexOf(point),keyAList.indexOf(pointB)));
+								
+							}
+							else
+							{
+								subAList.addAll(keyAList.subList(keyAList.indexOf(pointA),keyAList.indexOf(point)));
+								subAList.addAll(keyAList.subList(keyBList.indexOf(pointB),keyAList.indexOf(point)));
+							}
+							twiceMap.put(keyA+"->"+keyB,subAList);
+						}
+						else
+						{
+							if(keyBList.indexOf(point)<keyBList.indexOf(pointB))
+							{
+								subAList.addAll(keyAList.subList(keyAList.indexOf(point),keyAList.indexOf(pointA)));
+								subAList.addAll(keyAList.subList(keyBList.indexOf(point),keyAList.indexOf(pointB)));
+								
+							}
+							else
+							{
+								subAList.addAll(keyAList.subList(keyAList.indexOf(point),keyAList.indexOf(pointA)));
+								subAList.addAll(keyAList.subList(keyBList.indexOf(pointB),keyAList.indexOf(point)));
+							}
+							twiceMap.put(keyA+"->"+keyB,subAList);
+						}
+					}
+				}
+				
+			}
+		}
+		
+		//3ã€å¾—å‡ºæœ€ä¼˜çº¿è·¯
+		
+		Map<String,Integer> resultMap = new HashMap();
+		
+		//Collections.min(arg0, arg1);
+		for(Entry result:onceMap.entrySet())
+		{
+			resultMap.put((String) result.getKey(), ((List)result.getValue()).size());
+			
+			System.out.println((String)result.getKey()+"|"+((List)result.getValue()).size());
+		}
+		for(Entry result:twiceMap.entrySet())
+		{
+			resultMap.put((String) result.getKey(), ((List)result.getValue()).size());
+			System.out.println((String)result.getKey()+"|"+((List)result.getValue()).size());
+		}
 		
 		return 0;
 	}
 	
 	public static void main(String[] args) {
+		
+		new ShortestDistance().getRide("B", "C");
 
 	}
 
