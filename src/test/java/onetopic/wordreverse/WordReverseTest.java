@@ -12,27 +12,24 @@ package onetopic.wordreverse;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class WordReverseTest {
-	
-	/**
-	 * 
-	 * @param pInput
-	 * @param pOutput
-	 * @return
-	 */
-	@Test
-	public void converseOne()
-	{
-		String srcStr = "-i am --student";
-		String expectStr = "student am i";
-		
-		StringBuffer destSB = new StringBuffer();
-		new WordReverse().converse(srcStr, destSB);
-		assertEquals("equal message",expectStr,destSB.toString());
-		
-	}
-	
-
-	
-
+public class WordReverseTest
+{
+    
+    /**
+     * @param pInput
+     * @param pOutput
+     * @return
+     */
+    @Test
+    public void converseOne()
+    {
+        String srcStr = "-i am --student";
+        String expectStr = "student am i";
+        
+        StringBuffer destSB = new StringBuffer();
+        new WordReverse().converse(srcStr, destSB);
+        assertEquals("equal message", expectStr, destSB.toString());
+        
+    }
+    
 }
