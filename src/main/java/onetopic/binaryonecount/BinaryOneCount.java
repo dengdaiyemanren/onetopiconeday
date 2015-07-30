@@ -41,24 +41,14 @@ public class BinaryOneCount
     
     public int numberOf1Sec(int n)
     {
-<<<<<<< HEAD
+
         String str = Integer.toBinaryString(n);
         return str.replaceAll("0", "").length();
     }
     
     public static void main(String[] args)
     {
-        System.out.println(new BinaryOneCount().numberOf1Sec(-3));
-=======
-        return Integer.toBinaryString(n).replaceAll("0", "").length();
-    }
-    
-    
-    
-    public static void main(String[] args)
-    {
         System.out.println(new BinaryOneCount().numberOf1(-3));
->>>>>>> a269c2570f4a44c573d51fd99355c9625d1f8c83
         
     }
     

@@ -28,13 +28,7 @@ public class BinaryOneCountTest
     @Test
     public void BinaryOneCountOneNegative2 ()
     {
-<<<<<<< HEAD
-        //0000011->1111100->1111101 ->11111101
         int expectResult = 31;
-=======
-        //11->00->01 ->101
-        int expectResult = 2;
->>>>>>> a269c2570f4a44c573d51fd99355c9625d1f8c83
         int expectN = -3;//二进制表示为：取反，+1 ，首位为1，怎表示为
         
         assertEquals("equal message", expectResult, new BinaryOneCount().numberOf1Sec(expectN));
