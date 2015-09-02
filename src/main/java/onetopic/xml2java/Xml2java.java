@@ -11,7 +11,6 @@ import javax.xml.bind.Unmarshaller;
  * xml转化为java对象
  * 
  * @author yinlg
- * @param <T>
  * @created 2015年9月2日 下午11:49:55
  */
 public class Xml2java
