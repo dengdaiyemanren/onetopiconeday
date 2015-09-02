@@ -1,4 +1,4 @@
-package ontopic.threadlocaldemo;
+package onetopic.threadlocaldemo;
 
 public class ThreadLocalDemo
 {
