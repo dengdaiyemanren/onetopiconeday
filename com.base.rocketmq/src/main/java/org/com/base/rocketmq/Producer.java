@@ -15,20 +15,20 @@ public class Producer
         {
             producer.start();
             
-            Message msg = new Message("PushTopic", "push", "7", "Just for test.".getBytes());
+            Message msg = new Message("PushTopic", "push", "7", "Just for test7.".getBytes());
             
             SendResult result = producer.send(msg);
-            System.out.println("id:" + result.getMsgId() + " result:" + result.getSendStatus());
+            System.out.println("id:" + result.getMsgId() + " result7:" + result.getSendStatus());
             
-            msg = new Message("PushTopic", "push", "4", "Just for test.".getBytes());
-            
-            result = producer.send(msg);
-            System.out.println("id:" + result.getMsgId() + " result:" + result.getSendStatus());
-            
-            msg = new Message("PullTopic", "pull", "2", "Just for test.".getBytes());
+            msg = new Message("PushTopic", "push", "4", "Just for test4.".getBytes());
             
             result = producer.send(msg);
-            System.out.println("id:" + result.getMsgId() + " result:" + result.getSendStatus());
+            System.out.println("id:" + result.getMsgId() + " result4:" + result.getSendStatus());
+            
+            msg = new Message("PullTopic", "pull", "2", "Just for test2.".getBytes());
+            
+            result = producer.send(msg);
+            System.out.println("id:" + result.getMsgId() + " result2:" + result.getSendStatus());
         }
         catch (Exception e)
         {

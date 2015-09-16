@@ -28,7 +28,7 @@ public class PullConsumer
         Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("PullTopic");
         for (MessageQueue mq : mqs)
         {
-            System.out.println("Consume from the queue: " + mq);
+            System.out.println("PullConsume from the queue: " + mq);
             SINGLE_MQ:
             while (true)
             {
@@ -41,10 +41,10 @@ public class PullConsumer
                     {
                         for (MessageExt msg : list)
                         {
-                            System.out.println(new String((msg.getBody())));
+                            System.out.println("pullconsumer:"+new String((msg.getBody())));
                         }
                     }
-                    System.out.println(pullResult.getNextBeginOffset());
+                    System.out.println("pullconsumerbeginoffset:"+pullResult.getNextBeginOffset());
                     putMessageQueueOffset(mq, pullResult.getNextBeginOffset());
                     
                     switch (pullResult.getPullStatus())
