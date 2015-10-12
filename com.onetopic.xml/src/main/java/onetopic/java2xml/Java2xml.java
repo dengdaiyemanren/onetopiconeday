@@ -8,10 +8,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 /**
- * æŠŠjavaç±»è½¬æ¢ä¸ºxmlæ–‡ä»¶
- * 
+ * java×ª»¯Îªxml¶ÔÏó
  * @author yinlg
- * @created 2015å¹´9æœˆ2æ—¥ ä¸‹åˆ11:48:16
+ * @created 2015Äê9ÔÂ2ÈÕ ÏÂÎç11:49:55
  */
 public class Java2xml
 {
