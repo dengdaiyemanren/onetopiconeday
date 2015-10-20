@@ -31,5 +31,7 @@
     <module>com.onetopic.thinkinjava4</module>
     <module>com.base.rocketmq</module>
     <module>com.onetopic.algorithms</module>
+    <module>com.onetopic.hellomavenplugin</module>
+    <module>com.onetopic.hellmavenplugintest</module>
   </modules>
 </project>
