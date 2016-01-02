@@ -12,7 +12,7 @@ import javax.script.Compilable;
 import javax.script.CompiledScript;
 import javax.script.Invocable;
 
-public class SimpleScriptTest {
+public class JavaScriptTest {
 
 	@Test
 	public void explainSimpleScript() {
@@ -160,7 +160,7 @@ public class SimpleScriptTest {
 	public void dynamicExecJsFile() {
 		ScriptEngineManager manager = new ScriptEngineManager();
 		ScriptEngine engine = manager.getEngineByName("js");
-		String jsFilename = "c:\\listFiles.js";
+		String jsFilename = "script/listFiles.js";
 		try {
 			engine.eval(new FileReader(jsFilename));
 		} catch (Exception e) {

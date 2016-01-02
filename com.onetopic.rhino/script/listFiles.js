@@ -1,4 +1,4 @@
-   importClass(java.io.File);
+   importPackage(java.io);
    var rootDir = new File("c:/");
    var files = rootDir.listFiles();
    var fixlength=40;
