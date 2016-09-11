@@ -1,4 +1,4 @@
-ï»¿package onetopic.xml2java;
+package onetopic.xml2java;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -8,9 +8,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 /**
- * xmlè½¬åŒ–ä¸ºjavaå¯¹è±¡
+ * xml×ª»¯Îªjava¶ÔÏó
  * @author yinlg
- * @created 2015å¹´9æœˆ2æ—¥ ä¸‹åˆ11:49:55
+ * @created 2015Äê9ÔÂ2ÈÕ ÏÂÎç11:49:55
  */
 public class Xml2java
 {
