@@ -13,9 +13,9 @@ public class EchoServerTest {
 		ports[0] = 11111;
 		ports[1] = 11112;
 
-		EchoServer sc = new EchoServer(ports);
+		//EchoServer sc = new EchoServer(ports);
 
-		sc.server();
-		sc.client();
+		//sc.server();
+		//sc.client();
 	}
 }

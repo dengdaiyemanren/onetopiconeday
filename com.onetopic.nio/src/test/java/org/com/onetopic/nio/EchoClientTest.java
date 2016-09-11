@@ -8,10 +8,10 @@ public class EchoClientTest {
 	@Test
 	public void send() throws IOException 
 	{
-		EchoClient client = new EchoClient();
+		//EchoClient client = new EchoClient();
 		
-		String sendStr = "777777";
-		client.connectServerAndSend("127.0.0.1", 11111, sendStr);
+		//String sendStr = "777777";
+		//client.connectServerAndSend("127.0.0.1", 11111, sendStr);
 		
 	}
 }
