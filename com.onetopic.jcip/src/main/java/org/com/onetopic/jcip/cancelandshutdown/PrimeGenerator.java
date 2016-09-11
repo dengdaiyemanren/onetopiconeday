@@ -5,7 +5,8 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.*;
 
-import net.jcip.annotations.*;
+import org.com.onetopic.jcip.annotations.GuardedBy;
+import org.com.onetopic.jcip.annotations.ThreadSafe;
 
 /**
  * PrimeGenerator
