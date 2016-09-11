@@ -67,7 +67,7 @@ public class ByteBufferExampleTest {
 	@Test
 	public void silce()
 	{
-		ByteBufferExample buffer = new ByteBufferExample();
+		/*ByteBufferExample buffer = new ByteBufferExample();
 		buffer.put((byte)'a');
 		buffer.put("b".getBytes());
 		buffer.put((byte)'c');
@@ -83,7 +83,7 @@ public class ByteBufferExampleTest {
 		while(buffer.buffer.hasRemaining())
 		{
 			//System.out.println(buffer.get());
-		}
+		}*/
 	}
 	
 	@Test
