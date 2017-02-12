@@ -24,19 +24,21 @@ public class SelectSort
     {
         for (int i = 0; i < a.length; i++)
         {
-            int rightmin = i;
+        	//每一轮取剩下的第一个为待比较和交换的值
+            int smallestIndex = i;
             
             for (int j = i + 1; j < a.length; j++)
             {
-                if (Utils.less(a[j], a[rightmin]))
+                if (Utils.less(a[j], a[smallestIndex]))
                 {
-                    rightmin = j;
+                    smallestIndex = j;
                 }
             }
             
-            if (Utils.less(a[rightmin], a[i]))
+            if (Utils.less(a[smallestIndex], a[i]))
             {
-                Utils.exch(a, rightmin, i);
+            	//交换最小值
+                Utils.exch(a, smallestIndex, i);
             }
         }
         
