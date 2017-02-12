@@ -45,6 +45,11 @@ public class MergeSort
     }
     
     // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
+    
+    //原地归并
+    //合并步骤
+    //先复制到一个数组aux,然后从aux复制回来，由于半边元素都是有序的，只要取2边元素的时候比较下就可以了
+    //左边用尽，右半边用尽，右半边当前元素小于左半边当前元素，左半边当前元素小于右半边当前元素，
     private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi)
     {
         // precondition: a[lo .. mid] and a[mid+1 .. hi] are sorted subarrays
@@ -76,6 +81,7 @@ public class MergeSort
     }
     
     // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
+    //自顶向下归并排序。
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi)
     {
         if (hi <= lo)
