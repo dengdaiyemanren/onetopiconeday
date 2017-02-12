@@ -9,7 +9,12 @@ import onetopic.algorithms.common.Utils;
  * 步骤
  * 1、记住已经排好序的位置。
  * 2、取值与已经排好序的列比较，插入比他大的位置，其他元素依次向右移动一位
- * 
+ * 例子：
+ * 3,4,9,8
+ * 步骤1:
+ * 1)确定已经排好序的队列，初始为1，排序队列为3，未排序的为4,9,8
+ * 2)开始查找剩下的队列中比已经排好序的比他大的值，插入它的前面，排序队列为3,4,未排序队列为9,8
+ * 3)直到遍历完剩下的队列的所有值，3,4,9 | 8->3,4,8,9
  * @author yinlg
  * @created 2015年10月11日 下午11:46:16
  */
@@ -18,25 +23,29 @@ public class InsertSort
     public static void mysort(Comparable[] a)
     {
         
-        int sortLength = 1;
+        int sortedSize = 1;
         
         int length = a.length;
         
+        //剩下未排序的队列
         for (int i = 1; i < length; i++)
         {
             Comparable insertObject = a[i];
             
-            int insertIndex = sortLength;
-            for (int j = 0; j < sortLength; j++)
+            int insertIndex = sortedSize;
+            
+            //遍历已经排好序的数组,找到比待插入元素大的位置
+            for (int j = 0; j < sortedSize; j++)
             {
                 if (Utils.less(insertObject, a[j]))
                 {
-                    // fix the insert index
+                    // 确定好待插入的位置
                     insertIndex = j;
                     break;
                 }
             }
             
+            //>=insertIndex后面的已经排序序列都往后挪动一位
             for (int m = i - 1; m >= insertIndex; m--)
             {
                 a[m + 1] = a[m];
@@ -45,7 +54,7 @@ public class InsertSort
             
             a[insertIndex] = insertObject;
             
-            sortLength++;
+            sortedSize++;
         }
     }
     
