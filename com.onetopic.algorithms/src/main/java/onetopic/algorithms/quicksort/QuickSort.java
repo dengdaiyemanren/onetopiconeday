@@ -36,9 +36,9 @@ public class QuickSort {
 	 * 初始值：d, f, a, b,h,k
 	 * d -> f,a,b,h,k
 	 * 从low+1开始扫描选出第一个比d大的元素f,从high开始扫描选出比d小的元素b
-	 * 交换f,b ,结果d,b,a,f,h,k,i=1,j=3
-	 * 继续从i+1,j-1开始扫描，扫描出i=2,j=2,退出，得结果d,b,a,f,h,k,把low =0 与i=2交换，得出a,b,d,f,h,k,有序排序。
-	 * @param Comparable []
+	 * 交换f,b i=1,j=3,结果d-> b,a,f,h,k,交换d与j所在元素f, 返回位置j,
+	 * 得出f->b,a,d,h,k
+	ram Comparable []
 	 * @param low int
 	 * @param high int
 	 * @return int
@@ -59,7 +59,7 @@ public class QuickSort {
 			while(Utils.less(k, a[--j]))
 			if(j == low) break;
 			if(i>=j) break;
-			
+			 
 			//调换位置
 			Utils.exch(a, i, j);
 		}
