@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.onetopic</groupId>
+    <artifactId>com.onetopic-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>com.onetopic.cache</artifactId>
+  <name>com.onetopic.cache</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <coherence.version>12.2.1-2-0</coherence.version>
+  </properties>
+  <dependencies>
+    
+     <dependency>
+            <groupId>com.oracle.coherence</groupId>
+            <artifactId>coherence</artifactId>
+            <version>${coherence.version}</version>
+             <scope>system</scope> 
+             <systemPath>${project.basedir}/lib/coherence-12.2.1-2-0.jar</systemPath>
+      </dependency>
+  </dependencies>
+</project>
