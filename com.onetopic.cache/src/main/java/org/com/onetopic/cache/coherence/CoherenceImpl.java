@@ -16,6 +16,7 @@ public class CoherenceImpl implements ICache {
 	
 	public void init() {
 		
+	    System.setProperty("coherence.cacheconfig", "cache-config-cust.xml");
 		cacheFactory.ensureCluster();
 	}
 

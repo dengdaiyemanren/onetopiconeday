@@ -34,5 +34,7 @@
     <module>com.onetopic.hellmavenplugintest</module>
 	<module>com.onetopic.jcip</module>
     <module>com.onetopic.nio</module>
+    <module>com.onetopic.log</module>
+    <module>com.onetopic.cache</module>
   </modules>
 </project>
