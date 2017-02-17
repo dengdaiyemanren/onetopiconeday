@@ -23,41 +23,62 @@
 
 	
     <caching-schemes>
-        <!-- <federated-scheme>
-            <scheme-name>federated-scheme</scheme-name>
-            <backing-map-scheme>
-                <local-scheme>
-                    <unit-calculator>BINARY</unit-calculator>
-                    <expiry-delay>0</expiry-delay>
-                </local-scheme>
-            </backing-map-scheme>
-            <autostart>true</autostart>
-        </federated-scheme>
-        -->
+       
        <!-- 分布模式 -->
    	<distributed-scheme>
-   	  <scheme-name>distributed</scheme-name>
+   	  <scheme-name>distributed-long</scheme-name>
+   	  <service-name>DistributedCache</service-name>
+   	  <thread-count>50</thread-count>
+   	  <partition-count>509</partition-count>
+   	  <backup-count>1</backup-count>
+   	  
    	  <backing-map-scheme>
-      <local-scheme/>
+      		<local-scheme>
+      			<eviction-policy> LRU </eviction-policy>
+      			<high-units>512</high-units>
+      		 	<unit-calculator>BINARY</unit-calculator>
+      		 	<unit-factor>1048576</unit-factor>
+      		</local-scheme>
       </backing-map-scheme>
       <autostart>true</autostart>
    	</distributed-scheme>
+   	
+   	<distributed-scheme>
+   	  <scheme-name>distributed</scheme-name>
+   	  <service-name>DistributedCache</service-name>
+   	  <thread-count>50</thread-count>
+   	  <partition-count>509</partition-count>
+   	  <backup-count>1</backup-count>
+   	  
+   	  <backing-map-scheme>
+      		<local-scheme>
+      		<eviction-policy>LRU</eviction-policy>
+      		<high-units>512</high-units>
+      		 <unit-calculator>BINARY</unit-calculator>
+      		 <expiry-delay>1h</expiry-delay>
+      		</local-scheme>
+      </backing-map-scheme>
+      <autostart>true</autostart>
+   	</distributed-scheme>
+   	
    	
    	<!-- near模式 -->
    <near-scheme>
    	  <scheme-name>near</scheme-name>
    		<front-scheme>
-            <local-scheme/>
+            <local-scheme>
+            <eviction-policy>LRU</eviction-policy>
+            <high-units>5000</high-units>
+             <unit-calculator>FIXED</unit-calculator>
+            </local-scheme>
          </front-scheme>
          <back-scheme>
             <distributed-scheme>
-               <scheme-name>near-distributed</scheme-name>
-               <backing-map-scheme>
-                  <local-scheme/>
-               </backing-map-scheme>
-               <autostart>true</autostart>
+               <scheme-ref>distributed-long</scheme-ref>
             </distributed-scheme>
          </back-scheme>
+           <invalidation-strategy>none</invalidation-strategy>
+            <autostart>true</autostart>
    </near-scheme>  
     
     </caching-schemes>
