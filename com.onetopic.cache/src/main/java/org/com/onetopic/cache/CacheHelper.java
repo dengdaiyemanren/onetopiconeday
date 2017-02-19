@@ -4,6 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.com.onetopic.cache.coherence.CoherenceImpl;
+import org.com.onetopic.cache.ehcache.EhcacheImpl;
 
 public class CacheHelper {
 
@@ -25,7 +26,8 @@ public class CacheHelper {
 			try {
 				if (null == cacheManager) {
 
-					ICache cache = new CoherenceImpl();
+					ICache cache = new EhcacheImpl();
+					cache.init();
 					cacheManager = new CacheManager(cache);
 				}
 
