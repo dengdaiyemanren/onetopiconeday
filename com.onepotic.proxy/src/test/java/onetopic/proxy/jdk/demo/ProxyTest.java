@@ -1,6 +1,10 @@
-package org.com.onepotic.proxy.jdk.demo;
+package onetopic.proxy.jdk.demo;
 
 import org.junit.Test;
+
+import onetopic.proxy.jdk.demo.MyInvocationHandler;
+import onetopic.proxy.jdk.demo.UserService;
+import onetopic.proxy.jdk.demo.UserServiceImpl;
 
 public class ProxyTest {
 

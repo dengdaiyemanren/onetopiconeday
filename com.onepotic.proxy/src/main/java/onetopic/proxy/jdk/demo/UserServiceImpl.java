@@ -1,4 +1,4 @@
-package org.com.onepotic.proxy.jdk.demo;
+package onetopic.proxy.jdk.demo;
 
 /**
  * 目标对象

@@ -1,4 +1,4 @@
-package org.com.onepotic.proxy.jdk.demo;
+package onetopic.proxy.jdk.demo;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
