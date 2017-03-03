@@ -2,7 +2,6 @@ package onetopic.proxy.javassist.demo;
 
 import org.junit.Test;
 
-
 public class ProxyJavaassistTest {
 	@Test
 	public void testProxy() throws Throwable {
