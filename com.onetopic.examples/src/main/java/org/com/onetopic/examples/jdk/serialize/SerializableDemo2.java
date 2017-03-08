@@ -1,9 +1,12 @@
-package org.com.onetopic.examples.serialize;
+package org.com.onetopic.examples.jdk.serialize;
+
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class SerializableDemo  implements Serializable {
+public class SerializableDemo2  implements Serializable {
 	private static final long serialVersionUID =11122112111L;
 	
 
@@ -34,19 +37,18 @@ public class SerializableDemo  implements Serializable {
 		return serialVersionUID;
 	}
 	
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		out.defaultWriteObject();
+		out.writeInt(age);
+	}
+	
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {  
+        in.defaultReadObject();  
+        age = in.readInt();  
+    }  
 	
 	@Override 
     public String toString() {  
         return "[" + name + ", " + age + ", " + gender + "]";  
     }  
-	public static void main(String[] args) throws IOException, ClassNotFoundException 
-	{
-		SerializableDemo demo = new SerializableDemo();
-		demo.setAge(11);
-		demo.setName("name");
-		demo.setGender("gender");
-		
-		System.out.println(demo);
-		
-	}
 }
