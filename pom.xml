@@ -36,5 +36,6 @@
     <module>com.onetopic.nio</module>
     <module>com.onetopic.log</module>
     <module>com.onetopic.cache</module>
+    <module>com.onetopic.mkstddir</module>
   </modules>
 </project>
