@@ -37,5 +37,6 @@
     <module>com.onetopic.log</module>
     <module>com.onetopic.cache</module>
     <module>com.onetopic.mkstddir</module>
+    <module>com.onetopic.java8</module>
   </modules>
 </project>
